@@ -19,3 +19,4 @@ class Tour
 
   index({ title: 1, city: 1, state: 1 }, { name: "basic_tour_index" })
 end
+

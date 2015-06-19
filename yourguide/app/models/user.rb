@@ -10,16 +10,15 @@ class User
   field :middle_initial
   field :last_name
   field :email
-  field :phone_number
+  field :phone_numbers, type: Array
   field :city
   field :state
   field :zip, type: Integer
   field :created_at, type: Date, default: DateTime.now
 
-  embeds_many :phone_numbers
   attr_readonly :created_at
 
-  validates_presence_of :username, :password, :first_name, :last_name, :email
+  validates_presence_of :username, :first_name, :last_name, :email
   validates_uniqueness_of :username, :email
   # validates_length_of :password, minimum: 8, maximum: 20
 
