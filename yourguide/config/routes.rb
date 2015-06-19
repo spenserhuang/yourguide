@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :users
 
   post '/', to: 'welcome#signin'
-  get '/dashboard', to: 'users#show'
+  get '/dashboard', to: 'users#index'
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
   get '/browse', to: 'welcome#browse'
+  post '/tours/search', to: 'tours#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

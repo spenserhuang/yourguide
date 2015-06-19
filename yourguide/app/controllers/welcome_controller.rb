@@ -1,16 +1,21 @@
 class WelcomeController < ApplicationController
   def index
-    if session[:user_id]
-      redirect "/users/#{session[:user_id]}"
+    if user_logged_in?
+      render json: current_user
     else
-      erb :index
+      render json: false
     end
   end
 
   def signin
+    @user = User.find_by(username: params[:username])
 
-    current_user
-    session[:current_user] = User.find_by(username: params[:username])
+    if @user.password == params[:password]
+      session[:current_user] = User.find_by(username: params[:username])
+      render json: current_user
+    else
+      render json: false
+    end
   end
 
   def browse
