@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :tours
   resources :users
 
+  post '/', to: 'welcome#signin'
+  get '/dashboard', to: 'users#show'
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
   get '/browse', to: 'welcome#browse'
