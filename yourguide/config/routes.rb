@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   resources :tours
   resources :users
-  get 'welcome/index'
-  get 'sign_up', as: 'users#new'
-  get 'browse'
+
+  get '/sign_up', to: 'users#new'
+  post '/sign_up', to: 'users#create'
+  get '/browse', to: 'welcome#browse'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
