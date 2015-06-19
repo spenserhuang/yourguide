@@ -1,5 +1,7 @@
 class Tour
   include Mongoid::Document
+
+  has_many :comments
   belongs_to :user, index: true
   embeds_one :trailer
 
@@ -12,6 +14,8 @@ class Tour
   field :photo_urls, type: Array
   field :content
   field :created_at, type: Date, default: DateTime.now
+
+  field :tour_votes, type: Array, default: []
 
   attr_readonly :created_at
 

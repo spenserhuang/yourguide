@@ -3,6 +3,7 @@ class User
   include BCrypt
 
   has_many :tours, dependent: :destroy
+  has_many :comments, as: :author
 
   field :username
   field :password_hash
@@ -15,6 +16,8 @@ class User
   field :state
   field :zip, type: Integer
   field :created_at, type: Date, default: DateTime.now
+
+  field :tour_votes, type: Array, default: []
 
   attr_readonly :created_at
 

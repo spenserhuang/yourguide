@@ -9,9 +9,8 @@ class WelcomeController < ApplicationController
 
   def signin
     @user = User.find_by(username: params[:username])
-
     if @user.password == params[:password]
-      session[:current_user] = User.find_by(username: params[:username])
+      session[:user_id] = @user._id
       render json: current_user
     else
       render json: false
